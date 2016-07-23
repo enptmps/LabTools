@@ -129,6 +129,7 @@ function _Capitalize {
  
      Begin
      {
+       $domain = (Get-ADDomain).dnsroot
        # if (!($OU)){
        # $OU = (Get-ADDomain).UsersContainer
        # }
@@ -146,7 +147,7 @@ function _Capitalize {
               Surname = $($user.LastName);
               GivenName = $($user.GivenName);
               Samaccountname = $($accountName);
-              UserPrincipalName = "$($accountName)@pheo.org";
+              UserPrincipalName = "$($accountName)@$domain";
               StreetAddress = $($user.StreetAddress);
               City = $($user.City);
               State = $($user.State);
